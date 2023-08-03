@@ -16,4 +16,12 @@ public class RestUtils {
                 .body(requestPayload)
                 .post().then().log().all().extract().response();
     }
+    public static Response performPostFromMap(String endPoint, Map<String,Object> requestPayload, Map<String, String> headers) {
+        return RestAssured.given().log().all()
+                .baseUri(endPoint)
+                .headers(headers)
+                .contentType(JSON)
+                .body(requestPayload)
+                .post().then().log().all().extract().response();
+    }
 }
