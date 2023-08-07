@@ -11,16 +11,16 @@ import java.util.Map;
 
 import static restUtils.RestUtils.randomObj;
 
-public class AirlinesTests {
+public class AirlinesTests extends AirlineAPIs {
 
 
     @Test
-    public void createAirlinesFromMap() throws IOException {
+    public void createAirlines() throws IOException {
 
         Map<String, Object> payLoad = Payloads.getCreateAirlinesPayloadFromMap(String.valueOf(randomObj.nextInt(10000)), "RV Airlines", "IN", "ABC",
                 "ABC Slogan", "Delhi", "xyz", "2000");
-//        Response response = RestUtils.performPostFromMap(endPoint, payLoad, new HashMap<>());
-//        Assert.assertEquals(response.statusCode(), 200);
+        Response response = createAirline(payLoad);
+        Assert.assertEquals(response.statusCode(), 200);
     }
 
 
