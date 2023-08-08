@@ -13,16 +13,17 @@ public class Setup implements ITestListener {
     public void onStart(ITestContext context) {
         String fileName = ExtentReportingManager.getReportNameWithTimeStamp();
         String fullReportPath = System.getProperty("user.dir") + "\\reports\\" + fileName;
-
-        extentReports = ExtentReportingManager.createInstance(fileName, "Test API Automation Report", "Test Execution Report");
-    }
-
-    public void onFinish(ITestContext context) {
-        if (extentReports != null) extentReports.flush();
+        extentReports = ExtentReportingManager.createInstance(fullReportPath, "Test API Automation Report", "Test Execution Report");
     }
 
     public void onTestStart(ITestResult result) {
         ExtentTest test = extentReports.createTest("Test Name:-" + result.getTestClass().getName() + "-" + result.getMethod().getMethodName());
         extentTestThreadLocal.set(test);
     }
+
+    public void onFinish(ITestContext context) {
+        if (extentReports != null) extentReports.flush();
+    }
+
+
 }
