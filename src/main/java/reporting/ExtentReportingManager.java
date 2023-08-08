@@ -7,6 +7,7 @@ import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class ExtentReportingManager {
@@ -25,9 +26,9 @@ public class ExtentReportingManager {
     }
 
     public static String getReportNameWithTimeStamp() {
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("ss_mm_HH_MM_yyyy");
-        LocalDate localDate = LocalDate.now();
-        String formattedTime = dateTimeFormatter.format(localDate);
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy_MM_dd_HH_mm_ss");
+        LocalDateTime localDateTime = LocalDateTime.now();
+        String formattedTime = dateTimeFormatter.format(localDateTime);
         String reportName = "TestReport" + formattedTime + ".html";
         return reportName;
     }

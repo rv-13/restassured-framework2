@@ -5,8 +5,10 @@ import java.util.Map;
 
 public class Payloads {
 
-    public static String getCreateAirlinesPayloadFromString(String id, String name, String country, String
-            logo, String slogan, String headquarters, String website, String established) {
+    public static String getCreateAirlinesPayloadFromString(String id)   {
+    //String name, String country, String
+    //            logo, String slogan, String headquarters, String website, String established)
+
         String payLoad = "{\n" +
                 "    \"id\": " + id + ",\n" +
                 "    \"name\": \"Sri Lankan Airways\",\n" +
