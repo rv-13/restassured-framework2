@@ -22,6 +22,13 @@ public class AirlinesTests extends AirlineAPIs {
         Response response = createAirline(payLoad);
         Assert.assertEquals(response.statusCode(), 200);
     }
+    @Test
+    public void createAirlinesFromString() throws IOException {
+
+        String payLoad = Payloads.getCreateAirlinesPayloadFromString(String.valueOf(randomObj.nextInt(10000)));
+        Response response = createAirlineFromStringPayload(payLoad);
+        Assert.assertEquals(response.statusCode(), 200);
+    }
 
 
 }

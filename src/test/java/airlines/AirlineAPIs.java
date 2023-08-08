@@ -13,4 +13,10 @@ public class AirlineAPIs {
         Response response = RestUtils.performPostFromMap(endPoint, createAirlinePayload, new HashMap<>());
         return response;
     }
+    public Response createAirlineFromStringPayload(String createAirlinePayload) {
+
+        String endPoint = (String) Base.dataFromJsonFile.get("createAirLineEndpoint");
+        Response response = RestUtils.performPost(endPoint, createAirlinePayload, new HashMap<>());
+        return response;
+    }
 }
