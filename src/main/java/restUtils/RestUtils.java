@@ -38,7 +38,7 @@ public class RestUtils {
         ExtentReportingManager.logInfoDetails("Response Headers:-");
         ExtentReportingManager.logHeaders(response.getHeaders().asList());
         ExtentReportingManager.logInfoDetails("Response Body:-");
-        ExtentReportingManager.logJson(String.valueOf(response.getBody()));
+        ExtentReportingManager.logJson(String.valueOf(response.getBody().prettyPrint()));
 
     }
 

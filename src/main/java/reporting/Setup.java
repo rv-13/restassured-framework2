@@ -9,6 +9,7 @@ import org.testng.ITestResult;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 
 public class Setup implements ITestListener {
     private static ExtentReports extentReports;
@@ -26,7 +27,6 @@ public class Setup implements ITestListener {
     }
 
     public void onFinish(ITestContext context) {
-
         if (extentReports != null) {
             extentReports.flush();
             String fileName = ExtentReportingManager.getReportNameWithTimeStamp();
@@ -40,5 +40,15 @@ public class Setup implements ITestListener {
         }
     }
 
+    public void onTestFailure(ITestResult result) {
+        ExtentReportingManager.logFailureDetails(result.getThrowable().getMessage());
+        String stackTrace = Arrays.toString(result.getThrowable().getStackTrace());
+        stackTrace = stackTrace.replaceAll(",", "<br>");
+        String formattedTrace = "<details>\n" +
+                "  <summary>Click here to see Exception Logs</summary>\n" +
+                "  " + stackTrace + "\n" +
+                "</details>\n";
+        ExtentReportingManager.logExceptionDetails(formattedTrace);
+    }
 
 }
