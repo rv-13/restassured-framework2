@@ -26,15 +26,19 @@ public class RestUtils {
         QueryableRequestSpecification queryableRequestSpecification = SpecificationQuerier.query(requestSpecification);
         ExtentReportingManager.logInfoDetails("Base Endpoint:-" + queryableRequestSpecification.getBaseUri());
         ExtentReportingManager.logInfoDetails("Http Method Type:-" + queryableRequestSpecification.getMethod());
-        ExtentReportingManager.logInfoDetails("Headers:-" + queryableRequestSpecification.getHeaders().asList().toString());
-        ExtentReportingManager.logInfoDetails("Request Payload:-" + queryableRequestSpecification.getBody());
+        ExtentReportingManager.logInfoDetails("Headers are:-");
+        ExtentReportingManager.logHeaders(queryableRequestSpecification.getHeaders().asList());
+        ExtentReportingManager.logInfoDetails("Request Payload:-");
+        ExtentReportingManager.logJson(queryableRequestSpecification.getBody());
 
     }
 
     private static void printResponseLogInReport(Response response) {
         ExtentReportingManager.logInfoDetails("Http Status Code:-" + response.getStatusCode());
-        ExtentReportingManager.logInfoDetails("Response Headers:-" + response.getHeaders().asList().toString());
-        ExtentReportingManager.logInfoDetails("Response Body:-" + response.getBody());
+        ExtentReportingManager.logInfoDetails("Response Headers:-");
+        ExtentReportingManager.logHeaders(response.getHeaders().asList());
+        ExtentReportingManager.logInfoDetails("Response Body:-");
+        ExtentReportingManager.logJson(String.valueOf(response.getBody()));
 
     }
 

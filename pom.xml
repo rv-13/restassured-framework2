@@ -29,7 +29,7 @@
         <testngVersion>7.8.0</testngVersion>
         <jacksonDatabindVersion>2.15.2</jacksonDatabindVersion>
         <gsonVersion>2.10.1</gsonVersion>
-        <extentreportsVersion>5.0.9</extentreportsVersion>
+        <extentreportsVersion>5.1.0</extentreportsVersion>
         <lombokVersion>1.18.28</lombokVersion>
         <javaFakerVersion>1.0.2</javaFakerVersion>
         <commonslang3Version>3.13.0</commonslang3Version>

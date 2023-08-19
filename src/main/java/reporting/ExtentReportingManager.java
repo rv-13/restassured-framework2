@@ -1,14 +1,16 @@
 package reporting;
 
 import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.markuputils.CodeLanguage;
 import com.aventstack.extentreports.markuputils.ExtentColor;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
+import io.restassured.http.Header;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 public class ExtentReportingManager {
 
@@ -29,7 +31,7 @@ public class ExtentReportingManager {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy_MM_dd_HH_mm_ss");
         LocalDateTime localDateTime = LocalDateTime.now();
         String formattedTime = dateTimeFormatter.format(localDateTime);
-        String reportName = "TestReport" + formattedTime + ".html";
+        String reportName = "TestReport" + ".html";
         return reportName;
     }
 
@@ -47,6 +49,17 @@ public class ExtentReportingManager {
 
     public static void logWarningDetails(String log) {
         Setup.extentTestThreadLocal.get().pass(MarkupHelper.createLabel(log, ExtentColor.YELLOW));
+    }
+
+    public static void logJson(String json) {
+        Setup.extentTestThreadLocal.get().pass(MarkupHelper.createCodeBlock(json));
+    }
+
+    public static void logHeaders(List<Header> headersList) {
+        String[][] headersArray = headersList.stream().
+                map(header -> new String[]{header.getName(), header.getValue()})
+                .toArray(String[][]::new);
+        Setup.extentTestThreadLocal.get().pass(MarkupHelper.createTable(headersArray));
     }
 
 
