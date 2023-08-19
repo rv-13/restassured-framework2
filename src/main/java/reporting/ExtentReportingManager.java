@@ -7,6 +7,7 @@ import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 import io.restassured.http.Header;
+import org.testng.ITestResult;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -40,7 +41,11 @@ public class ExtentReportingManager {
     }
 
     public static void logFailureDetails(String log) {
-        Setup.extentTestThreadLocal.get().pass(MarkupHelper.createLabel(log, ExtentColor.RED));
+        Setup.extentTestThreadLocal.get().fail(MarkupHelper.createLabel(log, ExtentColor.RED));
+    }
+
+    public static void logExceptionDetails(String log) {
+        Setup.extentTestThreadLocal.get().fail(log);
     }
 
     public static void logInfoDetails(String log) {
