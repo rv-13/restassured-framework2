@@ -1,5 +1,6 @@
 package airlines;
 
+import pojos.Airline;
 import utils.DateUtils;
 import utils.RandomDataGenerator;
 import utils.RandomDataTypeNames;
@@ -51,5 +52,10 @@ public class Payloads {
         payload.put("website", RandomDataGenerator.getRandomWebsite(10));
         payload.put("established", RandomDataGenerator.getRandomNumberBetweenRange(1900, DateUtils.getCurrentYear()));
         return payload;
+    }
+
+    public static Airline getCreateAirlinePayloadFromPojo() {
+        return Airline
+                .builder().build();
     }
 }
