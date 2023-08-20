@@ -1,7 +1,7 @@
 package restUtils;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import io.restassured.RestAssured;
-import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.QueryableRequestSpecification;
 import io.restassured.specification.RequestSpecification;
@@ -34,16 +34,17 @@ public class RestUtils {
 
     }
 
-    private static void printResponseLogInReport(Response response) {
+    private static void printResponseLogInReport(Response response) throws JsonProcessingException {
         ExtentReportingManager.logInfoDetails("Http Status Code:-" + response.getStatusCode());
         ExtentReportingManager.logInfoDetails("Response Headers:-");
         ExtentReportingManager.logHeaders(response.getHeaders().asList());
         ExtentReportingManager.logInfoDetails("Response Body:-");
-        ExtentReportingManager.logJson(response.getBody().prettyPrint());
+
+        ExtentReportingManager.logJson(String.valueOf(response.getBody()));
 
     }
 
-    public static Response performPost(String endPoint, String requestPayload, Map<String, String> headers) {
+    public static Response performPost(String endPoint, String requestPayload, Map<String, String> headers) throws JsonProcessingException {
         RequestSpecification requestSpecificationReady = getRequestSpecification(endPoint, requestPayload, headers);
         Response response = requestSpecificationReady.post();
         printRequestLogInReport(requestSpecificationReady);
@@ -51,7 +52,7 @@ public class RestUtils {
         return response;
     }
 
-    public static Response performPostFromMap(String endPoint, Map<String, Object> requestPayload, Map<String, String> headers) {
+    public static Response performPostFromMap(String endPoint, Map<String, Object> requestPayload, Map<String, String> headers) throws JsonProcessingException {
         RequestSpecification requestSpecificationReady = getRequestSpecification(endPoint, requestPayload, headers);
         Response response = requestSpecificationReady.post();
         printRequestLogInReport(requestSpecificationReady);
