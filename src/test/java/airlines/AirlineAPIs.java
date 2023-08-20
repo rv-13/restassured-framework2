@@ -2,6 +2,7 @@ package airlines;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import io.restassured.response.Response;
+import pojos.Airline;
 import restUtils.RestUtils;
 
 import java.util.HashMap;
@@ -9,9 +10,14 @@ import java.util.Map;
 
 public class AirlineAPIs {
     public Response createAirline(Map<String, Object> createAirlinePayload) throws JsonProcessingException {
-
         String endPoint = (String) Base.dataFromJsonFile.get("createAirLineEndpoint");
         Response response = RestUtils.performPostFromMap(endPoint, createAirlinePayload, new HashMap<>());
+        return response;
+    }
+
+    public Response createAirlineFromPojo(Airline createAirlinePayload) throws JsonProcessingException {
+        String endPoint = (String) Base.dataFromJsonFile.get("createAirLineEndpoint");
+        Response response = RestUtils.performPostFromPojo(endPoint, createAirlinePayload, new HashMap<>());
         return response;
     }
 
