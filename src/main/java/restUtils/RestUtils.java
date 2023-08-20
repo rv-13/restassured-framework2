@@ -1,6 +1,7 @@
 package restUtils;
 
 import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.QueryableRequestSpecification;
 import io.restassured.specification.RequestSpecification;
@@ -38,7 +39,7 @@ public class RestUtils {
         ExtentReportingManager.logInfoDetails("Response Headers:-");
         ExtentReportingManager.logHeaders(response.getHeaders().asList());
         ExtentReportingManager.logInfoDetails("Response Body:-");
-        ExtentReportingManager.logJson(String.valueOf(response.getBody().prettyPrint()));
+        ExtentReportingManager.logJson(response.getBody().prettyPrint());
 
     }
 
