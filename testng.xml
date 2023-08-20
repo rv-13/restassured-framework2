@@ -8,10 +8,6 @@
           name="/Users/ravi/IdeaProjects/restassured2/src/test/java/airlines/AirlinesTests.java">
         <classes>
             <class name="airlines.AirlinesTests">
-                <methods>
-                    <include name="createAirlines"/>
-                    <include name="createAirlinesFromString"/>
-                </methods>
             </class>
         </classes>
     </test>
