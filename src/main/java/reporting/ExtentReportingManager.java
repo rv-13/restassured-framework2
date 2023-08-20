@@ -57,7 +57,7 @@ public class ExtentReportingManager {
     }
 
     public static void logJson(String json) {
-        Setup.extentTestThreadLocal.get().pass(MarkupHelper.createCodeBlock(json));
+        Setup.extentTestThreadLocal.get().pass(MarkupHelper.createCodeBlock(json, CodeLanguage.JSON));
     }
 
     public static void logHeaders(List<Header> headersList) {
