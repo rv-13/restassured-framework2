@@ -31,7 +31,7 @@
         <gsonVersion>2.10.1</gsonVersion>
         <extentreportsVersion>5.1.0</extentreportsVersion>
         <lombokVersion>1.18.28</lombokVersion>
-        <javaFakerVersion>1.0.2</javaFakerVersion>
+        <javaFakerVersion>2.0.1</javaFakerVersion>
         <commonslang3Version>3.13.0</commonslang3Version>
 
     </properties>
@@ -47,7 +47,7 @@
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>${testngVersion}</version>
-<!--            <scope>test</scope>-->
+            <!--            <scope>test</scope>-->
         </dependency>
         <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
         <dependency>
@@ -69,8 +69,8 @@
         </dependency>
         <!-- https://mvnrepository.com/artifact/com.github.javafaker/javafaker -->
         <dependency>
-            <groupId>com.github.javafaker</groupId>
-            <artifactId>javafaker</artifactId>
+            <groupId>net.datafaker</groupId>
+            <artifactId>datafaker</artifactId>
             <version>${javaFakerVersion}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
