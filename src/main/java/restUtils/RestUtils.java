@@ -52,6 +52,14 @@ public class RestUtils {
         return response;
     }
 
+    public static Response performPostFromPojo(String endPoint, Object requestPayloadAsPojo, Map<String, String> headers) throws JsonProcessingException {
+        RequestSpecification requestSpecificationReady = getRequestSpecification(endPoint, requestPayloadAsPojo, headers);
+        Response response = requestSpecificationReady.post();
+        printRequestLogInReport(requestSpecificationReady);
+        printResponseLogInReport(response);
+        return response;
+    }
+
     public static Response performPostFromMap(String endPoint, Map<String, Object> requestPayload, Map<String, String> headers) throws JsonProcessingException {
         RequestSpecification requestSpecificationReady = getRequestSpecification(endPoint, requestPayload, headers);
         Response response = requestSpecificationReady.post();
