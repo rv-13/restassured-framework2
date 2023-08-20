@@ -3,10 +3,8 @@ package airlines;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import restUtils.RestUtils;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
 
 import static restUtils.RestUtils.randomObj;
@@ -30,5 +28,11 @@ public class AirlinesTests extends AirlineAPIs {
         Assert.assertEquals(response.statusCode(), 200);
     }
 
+    @Test
+    public void createAirlinesFromDataFaker() throws IOException {
+        Map<String, Object> payLoad = Payloads.getCreateAirlinesPayloadFromFakerData();
+        Response response = createAirline(payLoad);
+        Assert.assertEquals(response.statusCode(), 200);
 
+    }
 }
