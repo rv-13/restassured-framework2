@@ -3,6 +3,7 @@ package airlines;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pojos.Airline;
 
 import java.io.IOException;
 import java.util.Map;
@@ -32,6 +33,15 @@ public class AirlinesTests extends AirlineAPIs {
     public void createAirlinesFromDataFaker() throws IOException {
         Map<String, Object> payLoad = Payloads.getCreateAirlinesPayloadFromFakerData();
         Response response = createAirline(payLoad);
+        Assert.assertEquals(response.statusCode(), 200);
+
+    }
+
+    @Test
+    public void createAirlinesFromPojo() throws IOException {
+//        Airline payLoad = Payloads.getCreateAirlinePayloadFromPojo();
+        Airline airlinePayload = new Airline();
+        Response response = createAirlineFromPojo(airlinePayload);
         Assert.assertEquals(response.statusCode(), 200);
 
     }
