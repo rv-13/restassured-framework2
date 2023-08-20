@@ -1,7 +1,8 @@
 package airlines;
 
-import net.datafaker.Faker;
-import org.apache.commons.lang3.RandomStringUtils;
+import utils.DateUtils;
+import utils.RandomDataGenerator;
+import utils.RandomDataTypeNames;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -41,15 +42,14 @@ public class Payloads {
 
     public static Map<String, Object> getCreateAirlinesPayloadFromFakerData() {
         HashMap<String, Object> payload = new HashMap<>();
-        Faker faker = new Faker();
-        payload.put("id", faker.number().digits(10));
-        payload.put("name", faker.name().firstName());
-        payload.put("country", faker.address().country());
-        payload.put("logo", RandomStringUtils.randomAlphabetic(25));
-        payload.put("slogan", RandomStringUtils.randomAlphabetic(25));
-        payload.put("head_quaters", faker.address().cityName());
-        payload.put("website", "https://" + RandomStringUtils.randomAlphabetic(10) + ".com");
-        payload.put("established", faker.number().numberBetween(1900, 2022));
+        payload.put("id", RandomDataGenerator.getRandomNumber(10));
+        payload.put("name", RandomDataGenerator.getRandomTestDataFor(RandomDataTypeNames.FIRSTNAME));
+        payload.put("country", RandomDataGenerator.getRandomTestDataFor(RandomDataTypeNames.COUNTRYNAME));
+        payload.put("logo", RandomDataGenerator.getRandomAlphabets(25));
+        payload.put("slogan", RandomDataGenerator.getRandomAlphabets(25));
+        payload.put("head_quaters", RandomDataGenerator.getRandomTestDataFor(RandomDataTypeNames.CITYNAME));
+        payload.put("website", RandomDataGenerator.getRandomWebsite(10));
+        payload.put("established", RandomDataGenerator.getRandomNumberBetweenRange(1900, DateUtils.getCurrentYear()));
         return payload;
     }
 }
