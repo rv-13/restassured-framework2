@@ -53,18 +53,18 @@ public class ExtentReportingManager {
     }
 
     public static void logWarningDetails(String log) {
-        Setup.extentTestThreadLocal.get().pass(MarkupHelper.createLabel(log, ExtentColor.YELLOW));
+        Setup.extentTestThreadLocal.get().warning(MarkupHelper.createLabel(log, ExtentColor.YELLOW));
     }
 
     public static void logJson(String json) {
-        Setup.extentTestThreadLocal.get().pass(MarkupHelper.createCodeBlock(json, CodeLanguage.JSON));
+        Setup.extentTestThreadLocal.get().info(MarkupHelper.createCodeBlock(json, CodeLanguage.JSON));
     }
 
     public static void logHeaders(List<Header> headersList) {
         String[][] headersArray = headersList.stream().
                 map(header -> new String[]{header.getName(), header.getValue()})
                 .toArray(String[][]::new);
-        Setup.extentTestThreadLocal.get().pass(MarkupHelper.createTable(headersArray));
+        Setup.extentTestThreadLocal.get().info(MarkupHelper.createTable(headersArray));
     }
 
 
