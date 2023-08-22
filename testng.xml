@@ -5,10 +5,9 @@
         <listener class-name="reporting.Setup"></listener>
     </listeners>
     <test verbose="2" preserve-order="true"
-          name="/Users/ravi/IdeaProjects/restassured2/src/test/java/airlines/AirlinesTests.java">
+          name="/Users/ravi/IdeaProjects/restassured2/src/test/java/user/UserTests.java">
         <classes>
-            <class name="airlines.AirlinesTests">
-            </class>
+            <class name="user.UserTests"></class>
         </classes>
     </test>
 </suite>

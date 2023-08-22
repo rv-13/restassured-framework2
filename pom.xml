@@ -31,7 +31,7 @@
         <gsonVersion>2.10.1</gsonVersion>
         <extentreportsVersion>5.1.0</extentreportsVersion>
         <lombokVersion>1.18.28</lombokVersion>
-        <dataFakerVersion>1.9.0</dataFakerVersion>
+        <dataFakerVersion>2.0.1</dataFakerVersion>
         <commonslang3Version>3.13.0</commonslang3Version>
 
     </properties>
