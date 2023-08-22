@@ -1,6 +1,5 @@
 package airlines;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -9,7 +8,7 @@ import pojos.Airline;
 import java.io.IOException;
 import java.util.Map;
 
-import static restUtils.RestUtils.randomObj;
+import static restutilities.RestUtils.randomObj;
 
 public class AirlinesTests extends AirlineAPIs {
 

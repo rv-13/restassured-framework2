@@ -4,7 +4,7 @@ import Base.Base;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import io.restassured.response.Response;
 import pojos.User;
-import restUtils.RestUtils;
+import restutilities.RestUtils;
 
 import java.io.IOException;
 import java.util.HashMap;

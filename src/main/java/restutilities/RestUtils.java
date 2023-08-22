@@ -1,4 +1,4 @@
-package restUtils;
+package restutilities;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import io.restassured.RestAssured;
