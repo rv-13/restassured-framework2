@@ -2,6 +2,7 @@ package restUtils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.QueryableRequestSpecification;
 import io.restassured.specification.RequestSpecification;
@@ -11,15 +12,13 @@ import reporting.ExtentReportingManager;
 import java.util.Map;
 import java.util.Random;
 
-import static io.restassured.http.ContentType.JSON;
-
 public class RestUtils {
 
     private static RequestSpecification getRequestSpecification(String endPoint, Object requestPayload, Map<String, String> headers) {
         return RestAssured.given()
                 .baseUri(endPoint)
                 .headers(headers)
-                .contentType(JSON)
+                .contentType(ContentType.JSON)
                 .body(requestPayload);
     }
 
@@ -39,8 +38,7 @@ public class RestUtils {
         ExtentReportingManager.logInfoDetails("Response Headers:-");
         ExtentReportingManager.logHeaders(response.getHeaders().asList());
         ExtentReportingManager.logInfoDetails("Response Body:-");
-
-        ExtentReportingManager.logJson(String.valueOf(response.getBody()));
+        ExtentReportingManager.logJson(response.getBody().prettyPrint());
 
     }
 
@@ -52,17 +50,19 @@ public class RestUtils {
         return response;
     }
 
-    public static Response performPostFromPojo(String endPoint, Object requestPayloadAsPojo, Map<String, String> headers) throws JsonProcessingException {
-        RequestSpecification requestSpecificationReady = getRequestSpecification(endPoint, requestPayloadAsPojo, headers);
+
+    public static Response performPostFromMap(String endPoint, Map<String, Object> requestPayload, Map<String, String> headers) throws JsonProcessingException {
+        RequestSpecification requestSpecificationReady = getRequestSpecification(endPoint, requestPayload, headers);
         Response response = requestSpecificationReady.post();
         printRequestLogInReport(requestSpecificationReady);
         printResponseLogInReport(response);
         return response;
     }
 
-    public static Response performPostFromMap(String endPoint, Map<String, Object> requestPayload, Map<String, String> headers) throws JsonProcessingException {
-        RequestSpecification requestSpecificationReady = getRequestSpecification(endPoint, requestPayload, headers);
-        Response response = requestSpecificationReady.post();
+    public static Response performPostFromPojo(String endPoint, Object requestPayloadAsPojo, Map<String, String> headers) throws JsonProcessingException {
+        RequestSpecification requestSpecificationReady = getRequestSpecification(endPoint, requestPayloadAsPojo, headers);
+        Response response = requestSpecificationReady.when().post();
+        System.out.println("RESPONSE:-" + (response.getBody()));
         printRequestLogInReport(requestSpecificationReady);
         printResponseLogInReport(response);
         return response;
