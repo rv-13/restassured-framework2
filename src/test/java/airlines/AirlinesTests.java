@@ -1,5 +1,6 @@
 package airlines;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -45,4 +46,16 @@ public class AirlinesTests extends AirlineAPIs {
         Assert.assertEquals(response.statusCode(), 200);
 
     }
+
+//    @Test
+//    public void createAirlinesAndVerifyResponse() throws IOException {
+//        Airline airlinePayload = new Airline();
+//        Response response = createAirlineFromPojo(airlinePayload);
+//        Assert.assertEquals(response.statusCode(), 200);
+//        Assert.assertEquals(response.jsonPath().getString("name"), airlinePayload.getName());
+//        ObjectMapper objectMapper = new ObjectMapper();
+//        Airline createAirlineResponse = objectMapper.readValue(response.getBody().asString(), Airline.class);
+//        Assert.assertEquals(createAirlineResponse, airlinePayload);
+//
+//    }
 }
