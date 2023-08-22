@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.Arrays;
 
 public class Setup implements ITestListener {
-    private static ExtentReports extentReports;
+    public static ExtentReports extentReports;
     public static ThreadLocal<ExtentTest> extentTestThreadLocal = new ThreadLocal<>();
 
     public void onStart(ITestContext context) {
