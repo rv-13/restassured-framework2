@@ -20,6 +20,8 @@ public class RandomDataGenerator {
                 return faker.address().cityName();
             case COUNTRYNAME:
                 return faker.address().country();
+            case JOBNAME:
+                return faker.job().field();
             default:
                 return "";
         }

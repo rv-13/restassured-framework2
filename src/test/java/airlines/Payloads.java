@@ -1,7 +1,6 @@
 package airlines;
 
 import pojos.Airline;
-import pojos.CreateUser;
 import utils.DateUtils;
 import utils.RandomDataGenerator;
 import utils.RandomDataTypeNames;
