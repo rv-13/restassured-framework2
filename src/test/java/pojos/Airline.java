@@ -1,9 +1,7 @@
 package pojos;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.*;
 import utils.DateUtils;
 import utils.RandomDataGenerator;
 import utils.RandomDataTypeNames;
@@ -12,7 +10,9 @@ import utils.RandomDataTypeNames;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode
 @Builder(toBuilder = true)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Airline {
     private int id = Integer.parseInt(RandomDataGenerator.getRandomNumber(6));
     private String name = RandomDataGenerator.getRandomTestDataFor(RandomDataTypeNames.FIRSTNAME);
