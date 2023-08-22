@@ -62,7 +62,6 @@ public class RestUtils {
     public static Response performPostFromPojo(String endPoint, Object requestPayloadAsPojo, Map<String, String> headers) throws JsonProcessingException {
         RequestSpecification requestSpecificationReady = getRequestSpecification(endPoint, requestPayloadAsPojo, headers);
         Response response = requestSpecificationReady.when().post();
-        System.out.println("RESPONSE:-" + (response.getBody()));
         printRequestLogInReport(requestSpecificationReady);
         printResponseLogInReport(response);
         return response;

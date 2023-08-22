@@ -39,7 +39,6 @@ public class AirlinesTests extends AirlineAPIs {
 
     @Test
     public void createAirlinesFromPojo() throws IOException {
-//        Airline payLoad = Payloads.getCreateAirlinePayloadFromPojo();
         Airline airlinePayload = new Airline();
         Response response = createAirlineFromPojo(airlinePayload);
         Assert.assertEquals(response.statusCode(), 200);
